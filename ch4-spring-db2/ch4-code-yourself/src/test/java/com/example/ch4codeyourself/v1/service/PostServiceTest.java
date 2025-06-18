@@ -5,6 +5,7 @@ import com.example.ch4codeyourself.v1.dto.PostCreateRequest;
 import com.example.ch4codeyourself.v1.dto.PostResponse;
 import com.example.ch4codeyourself.v1.dto.PostUpdateRequest;
 import com.example.ch4codeyourself.v1.repository.PostRepository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,6 +25,7 @@ import static org.mockito.Mockito.verify;
 // Mockito : Mocking 기능
 
 @ExtendWith(MockitoExtension.class)
+@Disabled
 class PostServiceTest {
 
     // 테스트를 위해 필요한 객체

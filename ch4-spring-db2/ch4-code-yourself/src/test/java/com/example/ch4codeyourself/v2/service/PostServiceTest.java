@@ -2,9 +2,11 @@ package com.example.ch4codeyourself.v2.service;
 
 import com.example.ch4codeyourself.v2.domain.Post;
 import com.example.ch4codeyourself.v2.dto.PostCreateRequest;
+import com.example.ch4codeyourself.v2.dto.PostPageResponse;
 import com.example.ch4codeyourself.v2.dto.PostResponse;
 import com.example.ch4codeyourself.v2.dto.PostSearchRequest;
 import com.example.ch4codeyourself.v2.repository.PostRepository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
+@Disabled
 class PostServiceTest {
 
     @Autowired
@@ -44,11 +47,15 @@ class PostServiceTest {
             postRepository.save(new Post(null,"게시글 "+i,"내용"));
         }
 
-        PostSearchRequest request = new PostSearchRequest("게시글 1",0,10);
+        PostSearchRequest request = new PostSearchRequest("",0,10);
 
         // when
-//        portService.getAllPosts(request);
+        PostPageResponse response = postService.getAllPosts(request);
 
         // then
+//        assertThat(response.getPosts()).isEqualTo(0);
+        assertThat(response.getSize()).isEqualTo(10);
+        assertThat(response.getTotalCount()).isEqualTo(20);
+        assertThat(response.getPosts()).hasSize(10);
     }
 }

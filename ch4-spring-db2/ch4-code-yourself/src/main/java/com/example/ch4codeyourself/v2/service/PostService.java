@@ -23,6 +23,8 @@ public class PostService {
     // mapper -> JPA repository 로 마이그레이션
     private final PostRepository postRepository ;
 
+
+
     public PostResponse createPost(PostCreateRequest request) {
         Post post = request.toDomain();
         Post saved = postRepository.save(post);
@@ -31,7 +33,7 @@ public class PostService {
 
     // 키워드가 제목에 포함된 게시글 가져오기
     @Transactional(readOnly = true)
-    public PostPageResponse search(PostSearchRequest request) {
+    public PostPageResponse getAllPosts(PostSearchRequest request) {
         Pageable pageable = PageRequest.of(request.getPage(), request.getSize());
         Page<PostResponse> page = postRepository.findByTitleContaining(request.getKeyword(), pageable)
                 .map(PostResponse::from);

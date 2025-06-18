@@ -1,24 +1,42 @@
 package com.example.ch4labs.controller;
 
-import com.example.ch4labs.domain.Review;
+import com.example.ch4labs.dto.*;
 import com.example.ch4labs.service.ReviewService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/reviews")
 public class ReviewController {
 
-    private final ReviewService service;
+    private final ReviewService reviewService;
 
     @PostMapping
-    public ResponseEntity<Review> addReview(@RequestBody Review review){
-        return ResponseEntity.ok(service.createPost(request));
+    public ResponseEntity<ReviewResponse> create(@RequestBody ReviewCreateRequest request) {
+        ReviewResponse response = reviewService.createReview(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response); // ← 201 Created
     }
 
+    @GetMapping
+    public ResponseEntity<List<ReviewResponse>> getAll() {
+        return ResponseEntity.ok(reviewService.getAllReviews()); //
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ReviewResponse> update(@PathVariable Long id,
+                                                 @RequestBody ReviewUpdateRequest request) {
+        return ResponseEntity.ok(reviewService.updateReview(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        reviewService.deleteReview(id);
+        return ResponseEntity.ok().build();
+    }
 }
