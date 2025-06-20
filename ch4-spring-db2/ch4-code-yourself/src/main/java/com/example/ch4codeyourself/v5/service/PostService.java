@@ -1,11 +1,11 @@
-package com.example.ch4codeyourself.v4.service;
+package com.example.ch4codeyourself.v5.service;
 
-import com.example.ch4codeyourself.v4.domain.Comment;
-import com.example.ch4codeyourself.v4.domain.Post;
-import com.example.ch4codeyourself.v4.dto.comment.CommentResponse;
-import com.example.ch4codeyourself.v4.dto.post.*;
-import com.example.ch4codeyourself.v4.repository.CommentRepository;
-import com.example.ch4codeyourself.v4.repository.PostRepository;
+import com.example.ch4codeyourself.v5.domain.Comment;
+import com.example.ch4codeyourself.v5.domain.Post;
+import com.example.ch4codeyourself.v5.dto.comment.CommentResponse;
+import com.example.ch4codeyourself.v5.dto.post.*;
+import com.example.ch4codeyourself.v5.repository.CommentRepository;
+import com.example.ch4codeyourself.v5.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

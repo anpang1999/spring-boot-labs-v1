@@ -2,7 +2,7 @@ package com.example.ch4labs.repository;
 
 import com.example.ch4labs.domain.QReview;
 import com.example.ch4labs.domain.Review;
-import com.example.ch4labs.dto.ReviewSearchRequest;
+import com.example.ch4labs.dto.review.ReviewSearchRequest;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

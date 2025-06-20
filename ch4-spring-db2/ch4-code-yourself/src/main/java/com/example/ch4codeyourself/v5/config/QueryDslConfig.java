@@ -1,4 +1,4 @@
-package com.example.ch4codeyourself.v4.config;
+package com.example.ch4codeyourself.v5.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

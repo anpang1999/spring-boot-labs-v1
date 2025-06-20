@@ -1,8 +1,8 @@
-package com.example.ch4codeyourself.v4.repository;
+package com.example.ch4codeyourself.v5.repository;
 
-import com.example.ch4codeyourself.v4.domain.Post;
-import com.example.ch4codeyourself.v4.dto.post.PostResponse;
-import com.example.ch4codeyourself.v4.dto.post.PostSearchRequest;
+import com.example.ch4codeyourself.v5.domain.Post;
+import com.example.ch4codeyourself.v5.dto.post.PostResponse;
+import com.example.ch4codeyourself.v5.dto.post.PostSearchRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

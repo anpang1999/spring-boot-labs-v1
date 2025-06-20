@@ -1,4 +1,4 @@
-package com.example.ch4codeyourself.v4.domain;
+package com.example.ch4codeyourself.v5.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,6 +24,10 @@ public class Comment {
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    Comment parent;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;

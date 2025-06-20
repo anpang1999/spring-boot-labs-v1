@@ -1,4 +1,4 @@
-package com.example.ch4codeyourself.v4.dto.post;
+package com.example.ch4codeyourself.v5.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

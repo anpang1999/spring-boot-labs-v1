@@ -2,10 +2,12 @@ package com.example.ch4codeyourself.v4.dto.post;
 
 import com.example.ch4codeyourself.v4.domain.Post;
 import com.example.ch4codeyourself.v4.dto.comment.CommentResponse;
+import com.example.ch4codeyourself.v4.dto.post.PostResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,17 +17,15 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Builder
 public class PostWithCommentsResponse {
-    private PostResponse post;
-    private List<CommentResponse> comments;
 
-    public static PostWithCommentsResponse from(Post post){
-        return PostWithCommentsResponse.builder()
+    private com.example.ch4codeyourself.v4.dto.post.PostResponse post;
+    private Page<com.example.ch4codeyourself.v4.dto.comment.CommentResponse> comments;
+
+    public static com.example.ch4codeyourself.v4.dto.post.PostWithCommentsResponse from(Post post, Page<CommentResponse> comments) {
+        return com.example.ch4codeyourself.v4.dto.post.PostWithCommentsResponse.builder()
                 .post(PostResponse.from(post))
                 .comments(
-                        post.getComments()
-                                .stream()
-                                .map(CommentResponse::from)
-                                .collect(Collectors.toList())
+                        comments
                 )
                 .build();
     }

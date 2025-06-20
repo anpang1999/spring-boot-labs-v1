@@ -1,4 +1,4 @@
-package com.example.ch4codeyourself.v4.domain;
+package com.example.ch4labs.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "comments")
+@Table(name="reviewscomments")
 public class Comment {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +25,10 @@ public class Comment {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Post post;
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime updatedAt;
+
+    @ManyToOne(fetch =  FetchType.LAZY)
+    private Review review;
+
 }

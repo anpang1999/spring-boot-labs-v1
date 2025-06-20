@@ -1,5 +1,6 @@
-package com.example.ch4codeyourself.v4.domain;
+package com.example.ch4codeyourself.v5.domain;
 
+import com.example.ch4codeyourself.v5.domain.Comment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

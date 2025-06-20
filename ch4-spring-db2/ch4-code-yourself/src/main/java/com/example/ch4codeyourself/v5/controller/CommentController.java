@@ -1,10 +1,7 @@
-package com.example.ch4codeyourself.v4.controller;
+package com.example.ch4codeyourself.v5.controller;
 
-import com.example.ch4codeyourself.v4.dto.comment.CommentCreateRequest;
-import com.example.ch4codeyourself.v4.dto.comment.CommentPageResponse;
-import com.example.ch4codeyourself.v4.dto.comment.CommentResponse;
-import com.example.ch4codeyourself.v4.dto.comment.CommentUpdateRequest;
-import com.example.ch4codeyourself.v4.service.CommentService;
+import com.example.ch4codeyourself.v5.dto.comment.*;
+import com.example.ch4codeyourself.v5.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +29,7 @@ public class CommentController {
     @GetMapping("/posts/{postId}/comments")
     public ResponseEntity<CommentPageResponse> getComments(
             @PathVariable Long postId,
+            @ModelAttribute CommentSearchRequest request,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size )
     {

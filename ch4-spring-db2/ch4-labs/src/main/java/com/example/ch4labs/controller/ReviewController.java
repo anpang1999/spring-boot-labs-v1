@@ -1,14 +1,12 @@
 package com.example.ch4labs.controller;
 
-import com.example.ch4labs.dto.*;
+import com.example.ch4labs.dto.review.*;
 import com.example.ch4labs.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package com.example.ch4codeyourself.v4.dto.comment;
+package com.example.ch4codeyourself.v5.dto.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

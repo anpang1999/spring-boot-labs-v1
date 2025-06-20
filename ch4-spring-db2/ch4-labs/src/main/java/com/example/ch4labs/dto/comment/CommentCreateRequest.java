@@ -1,13 +1,13 @@
-package com.example.ch4codeyourself.v4.dto.comment;
+package com.example.ch4labs.dto.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class CommentUpdateRequest {
+@NoArgsConstructor
+public class CommentCreateRequest {
     private String content;
+    private String author;
 }
-
