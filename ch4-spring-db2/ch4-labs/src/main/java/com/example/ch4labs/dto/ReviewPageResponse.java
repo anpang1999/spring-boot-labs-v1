@@ -2,23 +2,26 @@ package com.example.ch4labs.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 @Getter
 @Builder
 public class ReviewPageResponse {
-    private List<ReviewResponse> reviews;
-    private int page;
+    private List<ReviewResponse> content;
+    private long totalElements;
+    private int totalPages;
     private int size;
-    private long totalCount;
+    private int page;
 
-    public static ReviewPageResponse from(List<ReviewResponse> reviews, ReviewSearchRequest request, long count) {
+    public static ReviewPageResponse from(Page<ReviewResponse> pageData) {
         return ReviewPageResponse.builder()
-                .reviews(reviews)
-                .page(request.getPage())
-                .size(request.getSize())
-                .totalCount(count)
+                .content(pageData.getContent())
+                .totalElements(pageData.getTotalElements())
+                .totalPages(pageData.getTotalPages())
+                .size(pageData.getSize())
+                .page(pageData.getNumber())
                 .build();
     }
 }

@@ -11,21 +11,6 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<Review, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRepositoryCustom {
 
-    Page<Review> findByTitleContaining(String keyword, Pageable pageable);
-
-    Page<Review> findByAuthor(String author, Pageable pageable);
-
-    Page<Review> findByTitleContainingAndAuthor(String keyword, String author, Pageable pageable);
-
-    Page<Review> findByCreatedAtAfter(LocalDateTime createdAt, Pageable pageable);
-
-    @Query("SELECT r FROM Review r WHERE r.createdAt >= :createdAt")
-    Page<Review> searchByCreatedAt(@Param("createdAt") LocalDateTime createdAt, Pageable pageable);
-
-    @Query("SELECT r FROM Review r WHERE r.title LIKE %:keyword% AND r.author LIKE %:author%")
-    Page<Review> searchByTitleContainingAndAuthor(@Param("keyword") String keyword,
-                                                  @Param("author") String author,
-                                                  Pageable pageable);
 }

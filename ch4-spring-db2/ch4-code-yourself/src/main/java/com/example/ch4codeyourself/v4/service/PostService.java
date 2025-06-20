@@ -1,13 +1,11 @@
-package com.example.ch4codeyourself.v3.service;
+package com.example.ch4codeyourself.v4.service;
 
 
-import com.example.ch4codeyourself.v3.domain.Post;
-import com.example.ch4codeyourself.v3.dto.*;
-import com.example.ch4codeyourself.v3.repository.PostRepository;
+import com.example.ch4codeyourself.v4.domain.Post;
+import com.example.ch4codeyourself.v4.dto.post.*;
+import com.example.ch4codeyourself.v4.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -69,9 +67,9 @@ public class PostService {
     }
 
     @Transactional(readOnly = true)
-    public PostResponse getPostById(Long id) {
+    public PostWithCommentsResponse getPostById(Long id) {
         return postRepository.findById(id)
-                .map(PostResponse::from)
+                .map(PostWithCommentsResponse::from)
                 .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다."));
     }
 

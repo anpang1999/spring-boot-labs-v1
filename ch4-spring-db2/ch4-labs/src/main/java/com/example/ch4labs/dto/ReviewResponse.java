@@ -1,10 +1,12 @@
 package com.example.ch4labs.dto;
 
 import com.example.ch4labs.domain.Review;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ReviewResponse {
     private Long id;
@@ -13,17 +15,17 @@ public class ReviewResponse {
     private String author;
     private String bookTitle;
     private String bookAuthor;
-    private int rating;
+    private Integer rating;
 
     public static ReviewResponse from(Review review) {
-        return ReviewResponse.builder()
-                .id(review.getId())
-                .title(review.getTitle())
-                .content(review.getContent())
-                .author(review.getAuthor())
-                .bookTitle(review.getBookTitle())
-                .bookAuthor(review.getBookAuthor())
-                .rating(review.getRating())
-                .build();
+        ReviewResponse response = new ReviewResponse();
+        response.setId(review.getId());
+        response.setTitle(review.getTitle());
+        response.setContent(review.getContent());
+        response.setAuthor(review.getAuthor());
+        response.setBookTitle(review.getBookTitle());
+        response.setBookAuthor(review.getBookAuthor());
+        response.setRating(review.getRating());
+        return response;
     }
 }

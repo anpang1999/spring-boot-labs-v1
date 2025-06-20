@@ -1,9 +1,9 @@
-package com.example.ch4codeyourself.v3.repository;
+package com.example.ch4codeyourself.v4.repository;
 
-import com.example.ch4codeyourself.v3.domain.Post;
-import com.example.ch4codeyourself.v3.domain.QPost;
-import com.example.ch4codeyourself.v3.dto.PostResponse;
-import com.example.ch4codeyourself.v3.dto.PostSearchRequest;
+import com.example.ch4codeyourself.v4.domain.QPost;
+import com.example.ch4codeyourself.v4.domain.Post;
+import com.example.ch4codeyourself.v4.dto.post.PostResponse;
+import com.example.ch4codeyourself.v4.dto.post.PostSearchRequest;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +35,8 @@ public class PostQueryRepositoryImpl implements PostQueryRepository {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
+
+
 
         Long count = queryFactory
                 .select(post.count())
@@ -82,6 +84,7 @@ public class PostQueryRepositoryImpl implements PostQueryRepository {
                 .limit(pageable.getPageSize())
                 .offset(pageable.getOffset())
                 .fetch();
+
 
         long total = queryFactory.select(post.count())
                 .from(post)

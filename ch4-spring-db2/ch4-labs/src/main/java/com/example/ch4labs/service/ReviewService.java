@@ -26,18 +26,9 @@ public class ReviewService {
         return ReviewResponse.from(saved);
     }
 
-    @Transactional(readOnly = true)
-    public List<ReviewResponse> getAllReviews() {
-        return reviewRepository.findAll().stream()
-                .map(ReviewResponse::from)
-                .toList();
-    }
-
-    @Transactional(readOnly = true)
-    public ReviewResponse getReviewById(Long id) {
-        Review review = reviewRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("해당 리뷰가 존재하지 않습니다."));
-        return ReviewResponse.from(review);
+    public Page<ReviewResponse> search(ReviewSearchRequest request) {
+        return reviewRepository.searchByConditions(request)
+                .map(ReviewResponse::from);
     }
 
     public ReviewResponse updateReview(Long id, ReviewUpdateRequest request) {
